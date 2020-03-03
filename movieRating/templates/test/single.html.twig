@@ -5,5 +5,15 @@
 {% block pageTitle %} {{ movie.title }} {% endblock %}
 
 {% block main %}
-{{ movie.getAverage }}
+  <span class="badge reverseBg p-2">Sortie : {{movie.releaseYear|date('d/m/Y')}}</span>
+  <span class="badge reverseBg p-2">Genre : {{movie.type}}</span>
+  <span class="badge reverseBg p-2">Réalisateur : {{movie.author}}</span>
+  <span class="badge secondBg p-2">Evaluation : {{ movie.getAverage }}/5</span>
+
+  <div class="mt-5 clearfix">
+    <div class="float-left mr-4 mb-4">
+      <img class="img-fluid" src="https://picsum.photos/400/300" alt="Card image cap">
+    </div>
+    <p>{{movie.sumary}}</p>
+  </div>
 {% endblock %}
