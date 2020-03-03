@@ -1,23 +1,23 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Catalogue{% endblock %}
 
-{% block pageTitle %}Accueil{% endblock %}
+{% block pageTitle %}Les films au catalogue{% endblock %}
 
 {% block main %}
   <div class="row">
     {% for movie in movies %}
     <div class="col-6 col-sm-4">
-      <div class="card my-5 reverseBg border-0">
+      <article class="card my-5 reverseBg border-0">
         <img class="card-img-top" src="https://picsum.photos/400/300?random={{loop.index}}" alt="Card image cap">
-        <div class="card-body">
+        <section class="card-body">
           <h5 class="card-title">{{ movie.title }}</h5>
           <div class="text-center">
             <a href="{{ path("evaluation", {"id" : movie.id})}}" class="btn secondBg">Evaluer</a>
             <a href="{{ path("single", {"id" : movie.id})}}" class="btn secondBg">Voir</a>
           </div>
-        </div>
-      </div>
+        </section>
+      </article>
     </div>
   {% endfor %}
   </div>
