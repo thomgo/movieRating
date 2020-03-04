@@ -158,6 +158,6 @@ class Movie
         }
         return round(($evalSum/$evalNumber), 2);
       }
-      return "Pas encore d'évaluations";
+      return False;
     }
 }
