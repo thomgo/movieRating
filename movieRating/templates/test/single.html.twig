@@ -5,19 +5,5 @@
 {% block pageTitle %} {{ movie.title }} {% endblock %}
 
 {% block main %}
-  <span class="badge reverseBg p-2">Sortie : {{movie.releaseYear|date('d/m/Y')}}</span>
-  <span class="badge reverseBg p-2">Genre : {{movie.type}}</span>
-  <span class="badge reverseBg p-2">Réalisateur : {{movie.author}}</span>
-  {% if movie.getAverage %}
-    <span class="badge secondBg p-2">Evaluation : {{ movie.getAverage }}/5</span>
-  {% else %}
-    <span class="badge secondBg p-2">Pas encore d'évaluation</span>
-  {% endif %}
-
-  <div class="mt-5 clearfix">
-    <div class="float-left mr-4 mb-4">
-      <img class="img-fluid" src="https://picsum.photos/400/300" alt="Card image cap">
-    </div>
-    <p>{{movie.sumary}}</p>
-  </div>
+  {% include 'movieDisplay.html.twig' %}
 {% endblock %}
