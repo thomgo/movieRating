@@ -8,9 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Movie;
 use App\Entity\Evaluation;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Form\EvaluationType;
 
 class TestController extends AbstractController
 {
@@ -42,13 +40,7 @@ class TestController extends AbstractController
     public function rate(Movie $movie, Request $request)
     {
         $evaluation = new Evaluation();
-
-        $form = $this->createFormBuilder($evaluation)
-            ->add('comment', TextType::class)
-            ->add('grade', IntegerType::class)
-            ->add('save', SubmitType::class)
-            ->getForm();
-
+        $form = $this->createForm(EvaluationType::class, $evaluation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
