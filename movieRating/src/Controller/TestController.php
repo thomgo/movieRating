@@ -30,8 +30,17 @@ class TestController extends AbstractController
      */
     public function show(Movie $movie)
     {
+        $repository = $this->getDoctrine()->getRepository(Evaluation::class);
+        $evaluations = $repository->findBy(
+          ["movie" => $movie],
+          ["evalDate" => "DESC"],
+          5,
+          0
+        );
+        dump($evaluations);
         return $this->render('test/single.html.twig', [
-          "movie" => $movie
+          "movie" => $movie,
+          "evaluations" => $evaluations
         ]);
     }
 

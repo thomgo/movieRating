@@ -6,4 +6,12 @@
 
 {% block main %}
   {% include 'movieDisplay.html.twig' %}
+  <h3 class="mt-5">Les dernières évaluations</h3>
+  {% for evaluation in evaluations %}
+    <div class="alert reverseBg ml-3">
+      <span class="badge secondBg p-2">{{ evaluation.grade}}/10</span>
+      <span>{{ evaluation.comment }} | </span>
+      <span class="font-italic">Par {{evaluation.user.userName}} le {{ evaluation.evaldate|date('d/m/Y')}}</span>
+    </div>
+  {% endfor %}
 {% endblock %}
