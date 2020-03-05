@@ -12,7 +12,7 @@ use App\Form\EvaluationType;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
-class TestController extends AbstractController
+class MovieRatingController extends AbstractController
 {
     /**
      * @Route("/", name="index")
@@ -20,7 +20,7 @@ class TestController extends AbstractController
     public function index()
     {
         $movies = $this->getDoctrine()->getRepository(Movie::class)->findAll();
-        return $this->render('test/index.html.twig', [
+        return $this->render('movieRating/index.html.twig', [
           "movies" => $movies
         ]);
     }
@@ -38,7 +38,7 @@ class TestController extends AbstractController
           0
         );
         dump($evaluations);
-        return $this->render('test/single.html.twig', [
+        return $this->render('movieRating/single.html.twig', [
           "movie" => $movie,
           "evaluations" => $evaluations
         ]);
@@ -69,7 +69,7 @@ class TestController extends AbstractController
           }
         }
 
-        return $this->render('test/evaluation.html.twig', [
+        return $this->render('movieRating/evaluation.html.twig', [
           "movie" => $movie,
           "form" => $form->createView()
         ]);
