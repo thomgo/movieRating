@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% include 'header.html.twig'%}
+
+<main class="container">
+  <h2>{% block pageTitle %}{% endblock %}</h2>
+  {% block main %}{% endblock %}
+</main>
+
+{% include 'footer.html.twig'%}
+
+{% endblock %}

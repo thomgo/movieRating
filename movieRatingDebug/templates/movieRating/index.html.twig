@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block pageTitle %}Les films au catalogue{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <!-- On boucle pour afficher chaque film de la variables movies sous forme de carte -->
+    {% for movie in movies %}
+    <div class="col-6 col-sm-4">
+      <article class="card my-5 reverseBg border-0">
+        <img class="card-img-top img-fluid" src="https://picsum.photos/400/300?random={{loop.index}}" alt="Card image cap">
+        <section class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <div class="text-center">
+            <a href="{{ path("evaluation", {"id" : movie.id})}}" class="btn secondBg">Evaluer</a>
+            <a href="{{ path("single", {"id" : movie.id})}}" class="btn secondBg">Voir</a>
+          </div>
+        </section>
+      </article>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}
