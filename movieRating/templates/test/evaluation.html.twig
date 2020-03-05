@@ -5,6 +5,17 @@
 {% block pageTitle %}Evaluer : {{ movie.title }}{% endblock %}
 
 {% block main %}
+  {% for error in app.flashes('errors') %}
+    <div class="alert alert-danger">
+        {{ error.message }}
+    </div>
+  {% endfor %}
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+  {% endfor %}
+
   {% include 'movieDisplay.html.twig' %}
   {{ form(form) }}
 {% endblock %}

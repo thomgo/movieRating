@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EvaluationRepository")
@@ -23,6 +24,12 @@ class Evaluation
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 10,
+     *      minMessage = "La note minimale est de {{ limit }}",
+     *      maxMessage = "La note maximale est de {{ limit }}"
+     * )
      */
     private $grade;
 

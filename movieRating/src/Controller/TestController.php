@@ -9,6 +9,8 @@ use App\Entity\Movie;
 use App\Entity\Evaluation;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EvaluationType;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 
 class TestController extends AbstractController
 {
@@ -37,7 +39,7 @@ class TestController extends AbstractController
      * @Route("/evaluation/{id}", name="evaluation")
      * @IsGranted("ROLE_USER")
      */
-    public function rate(Movie $movie, Request $request)
+    public function rate(Movie $movie, Request $request, ValidatorInterface $validator)
     {
         $evaluation = new Evaluation();
         $form = $this->createForm(EvaluationType::class, $evaluation);
@@ -46,9 +48,16 @@ class TestController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
           $evaluation->setMovie($movie);
           $evaluation->setUser($this->getUser());
-          $entityManager = $this->getDoctrine()->getManager();
-          $entityManager->persist($evaluation);
-          $entityManager->flush();
+          $errors = $validator->validate($evaluation);
+          if (count($errors) > 0) {
+            $this->addFlash('errors', $errors);
+          }
+          else {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($evaluation);
+            $entityManager->flush();
+            $this->addFlash('success', 'Evaluation enregistrée');
+          }
         }
 
         return $this->render('test/evaluation.html.twig', [
