@@ -30,6 +30,7 @@ class MovieRatingController extends AbstractController
      */
     public function show(Movie $movie)
     {
+        // Récupère les 5 dernière évaluation du film en commençant par la plus récente
         $repository = $this->getDoctrine()->getRepository(Evaluation::class);
         $evaluations = $repository->findBy(
           ["movie" => $movie],
@@ -37,7 +38,7 @@ class MovieRatingController extends AbstractController
           5,
           0
         );
-        dump($evaluations);
+
         return $this->render('movieRating/single.html.twig', [
           "movie" => $movie,
           "evaluations" => $evaluations
@@ -57,10 +58,13 @@ class MovieRatingController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
           $evaluation->setMovie($movie);
           $evaluation->setUser($this->getUser());
+          // On vérifie que les règle de valiation ont été respectées
           $errors = $validator->validate($evaluation);
+          // Si on a trouvé des valeurs erronées on stock les message en session
           if (count($errors) > 0) {
             $this->addFlash('errors', $errors);
           }
+          // Sinon on peut procéder à l'enregistrement
           else {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($evaluation);

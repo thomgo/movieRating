@@ -5,8 +5,11 @@
 {% block pageTitle %} {{ movie.title }} {% endblock %}
 
 {% block main %}
+  <!-- Chargement de l'affichage du film dans un fichier indépendant car utilisé deux fois dans l'application -->
   {% include 'movieDisplay.html.twig' %}
+
   <h3 class="mt-5">Les dernières évaluations</h3>
+  <!-- On boucle pour afficher le contenu de la variable evaluations créée dans le controleur  -->
   {% for evaluation in evaluations %}
     <div class="alert reverseBg ml-3">
       <span class="badge secondBg p-2">{{ evaluation.grade}}/10</span>
