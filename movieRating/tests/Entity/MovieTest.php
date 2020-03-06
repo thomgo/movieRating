@@ -16,10 +16,8 @@ public function testGetAverage($grades, $expectedResult)
 {
   $movie = new Movie();
   foreach ($grades as $grade) {
-    var_dump($grade);
     $evaluation = new Evaluation();
     $evaluation->setGrade($grade);
-    // var_dump($evaluation->getGrade());
     $movie->addEvaluation($evaluation);
   }
     $this->assertEquals($expectedResult, $movie->getAverage());
