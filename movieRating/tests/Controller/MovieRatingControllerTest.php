@@ -37,8 +37,20 @@ class MovieRatingControllerTest extends WebTestCase
     return [
       ["/"],
       ['/login'],
-      ['/single/104']
     ];
+  }
+
+  // Test the right number of cards according to the number of movies
+  public function testIndex() {
+    $movies = $this->entityManager
+            ->getRepository(Movie::class)
+            ->findAll();
+    $crawler = $this->client->request('GET', "/");
+    $this->assertEquals(count($movies), $crawler->filter('article.card')->count());
+    foreach ($movies as $key => $movie) {
+      $title = $movie->getTitle();
+      $this->assertEquals(1, $crawler->filter("h5.card-title:contains(\"$title\")")->count());
+    }
   }
 
   // Test que tous les articles sont correctement affichés
