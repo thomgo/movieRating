@@ -1,17 +1,17 @@
 <!-- Template à utiliser sur une page contenant une variable movie pour son affichage détaillé -->
 
-<span class="badge reverseBg p-2" id="releaseYear">Sortie : {{movie.releaseYear|date('d/m/Y')}}</span>
-<span class="badge reverseBg p-2" id="type">Genre : {{movie.type}}</span>
-<span class="badge reverseBg p-2" id="author">Réalisateur : {{movie.author}}</span>
+<span class="badge  p-2">Sortie : {{movi.releaseYear|date('d/m/Y')}}</span>
+<span class="badge  p-2" id="type">Genre : {{movie.type}}</span>
+<span class="badge  p-2">Réalisateur : {{movie.autor}}</span>
 {% if movie.getAverage %}
-  <span class="badge secondBg p-2" id="average">Evaluation : {{ movie.getAverage }}/10</span>
+<span class="badge secondBg p-2" id="average">Evaluation : {{ movie.getAverage }}/10</span>
 {% else %}
-  <span class="badge secondBg p-2" id="average">Pas encore d'évaluation</span>
+<span class="badge secondBg p-2" id="average">Pas encore d'évaluation</span>
 {% endif %}
 
-<div class="mt-5 clearfix">
-  <div class="float-left mr-4 mb-4">
-    <img class="img-fluid" src="https://picsum.photos/400/300" alt="Card image cap">
-  </div>
-  <p id="sumary">{{movie.sumary}}</p>
+<div class="mt-5">
+<div class="float-left">
+<img class="" src="https://picsum.photos/400/300" alt="Card image cap">
+</div>
+<p id="sumary">{{movie.summary}}</p>
 </div>

@@ -24,12 +24,12 @@ class Evaluation
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Range(
+     * @Assert\Range
      *      min = 0,
-     *      max = 10,
-     *      minMessage = "La note minimale est de {{ limit }}",
-     *      maxMessage = "La note maximale est de {{ limit }}"
-     * )
+     *      max = 10
+     *      minMessage = "La note minimale est de ",
+     *      maxMessage = "La note maximale est de "
+     *
      */
     private $grade;
 
@@ -79,11 +79,9 @@ class Evaluation
         return $this->grade;
     }
 
-    public function setGrade(int $grade): self
+    public function setGrade($grade): self
     {
-        if($grade >= self::MIN_GRADE && $grade <= self::MAX_GRADE) {
           $this->grade = $grade;
-        }
         return $this;
     }
 

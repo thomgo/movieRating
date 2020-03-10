@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Evaluation{% endblock %}
+
+{% block pageTitle %}Evaluer : {{ movie.title }}{% endblock %}
+
+{% block main %}
+
+  <!-- Affiche le détail du film -->
+  {% include 'movieDisplay.html.twig' %}
+  <!-- Formulaire d'évaluation -->
+  {{ form }}
+{% endblock %}
