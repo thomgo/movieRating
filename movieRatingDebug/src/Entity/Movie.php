@@ -149,21 +149,13 @@ class Movie
         return $this;
     }
 
-    // Fonction qui calcule la moyenne des notes sur une collection d'évaluations
-    public function getAverage() {
-      // On compte le nom d'évaluation
-      $evalNumber = count($this->evaluations);
-      // On fait le total de toute les notes s'il y en a
-      $evalSum = 0;
-      if($evalNumber > 0) {
-        foreach ($this->evaluations as $evaluation) {
-          $evalSum += $evaluation->getGrade();
-        }
-        // On divise le total par le nombre de notes pour avoir la moyenne
-        // On retourne le résultat arrondi à deux décimales
-        return round(($evalSum/$evalNumber), 2);
-      }
-      // Si pas de notes on renvoie false
-      return False;
-    }
+
+public function getAverage() {
+$evalNumber = count($this->evaluations);
+$evalSum = 0;
+foreach ($this->evaluations as $evaluation) {
+$evalSum = $evaluation->getGrade();
+return $evalSum/$evalNumber;
+}
+}
 }

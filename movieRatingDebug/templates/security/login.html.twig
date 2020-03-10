@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Identification{% endblock %}
+{% block title %}{% endblock %}
 
-{% block pageTitle %}Identifiez-vous pour continuer{% endblock %}
+{% block pageTitle %}{% endblock %}
 
 {% block main %}
-  <form method="post">
+  <form>
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}

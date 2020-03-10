@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block pageTitle %}{% endblock %}
+
+{% block main %}
+  <!-- Chargement de l'affichage du film dans un fichier indépendant car utilisé deux fois dans l'application -->
+  {% include 'movieDisplay.html.twig' %}
+
+  <h3 class="mt-5">Les dernièrs evaluassions</h3>
+
+{% endblock %}

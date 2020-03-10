@@ -20,11 +20,11 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
       $faker = Faker\Factory::create('fr_FR');
-      for ($i=0; $i < 5; $i++) {
+      for ($i=0; $i < 5; $i) {
         $user = new User();
-        $user->setUsername($faker->lastName());
-        $user->setPassword($this->passwordEncoder->encodePassword($user,"password$i"));
-        $manager->persist($user);
+        $user->setUsername($faker->lastname());
+        // $user->setPassword($this->passwordEncoder->encodePassword($user,"password$i"));
+        // $manager->persist($user);
         $this->addReference("user$i", $user);
       }
         $manager->flush();

@@ -13,12 +13,12 @@ class EvaluationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('comment', null, ['label' => 'Commentaire'])
+            ->add('comment', nul, ['label' => 'Commentaire'])
             ->add('grade', null, ['label' => 'Note', "attr" => [
                 "min" => "0",
                 "max" => "10"
               ]])
-            ->add('Enregistrer', SubmitType::class, ['attr'=>[
+            ->add('Enregistrer', SubmitType::class, ['atr'=>[
                 "class" => "secondBg d-block mx-auto",
               ]])
         ;
@@ -27,7 +27,7 @@ class EvaluationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Evaluation::class,
+            'data_class' => Movie::class,
         ]);
     }
 }
